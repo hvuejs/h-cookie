@@ -1,0 +1,43 @@
+{
+	"name": "h-cookie",
+	"version": "1.0.0",
+	"description": "A simple API for JavaScript to handle cookie storage",
+	"license": "MIT",
+	"main": "dist/h.cookie.cjs.js",
+	"module": "dist/h.cookie.esm.js",
+	"browser": "dist/h.cookie.js",
+	"repository": "haojs-next/h-cookie",
+	"author": {
+		"name": "hao",
+		"url": "https://github.com/haojs-next/h-cookie"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c -w"
+	},
+	"files": [
+		"index.js",
+		"dist/**/*"
+	],
+	"keywords": [
+		"browser",
+		"hcookie",
+		"cookie",
+		"vuecookie",
+		"cookies",
+		"vuecookies"
+	],
+	"devDependencies": {
+		"core-js": "^3.18.0",
+		"@babel/core": "^7.15.5",
+		"@babel/preset-env": "^7.15.6",
+		"rollup": "^2.56.3",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-filesize": "^9.1.1",
+		"rollup-plugin-terser": "^7.0.2"
+	}
+}
