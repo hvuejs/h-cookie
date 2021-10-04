@@ -48,5 +48,5 @@ hCookie.get('nothing') // => undefined
 Remove cookie:
 
 ```javascript
-hCookie.det("name"); // => null
+hCookie.remove("name"); // => null
 ```

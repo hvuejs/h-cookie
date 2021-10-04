@@ -1,5 +1,6 @@
 'use strict';
 
+const _globar = (typeof window !== "undefined" ? window : global || {});
 const cookie = function (key, value, options) {
     if (arguments.length > 1 && String(value) !== "[object Object]") {
         options = extend({path:'/',expires:(new Date((new Date()).getTime()+1000*60*60*24))}, options);
@@ -103,7 +104,7 @@ var isPlainObject = function( obj ) {
 };
 
 
-var hcookie = {
+var hCookie = {
 	set: function set (key, value, option) {
 		var path = option && option.path || "/";
 		var expires = option && option.expires || 1;
@@ -114,9 +115,11 @@ var hcookie = {
 	get: function get (key) {
 		return cookie(key) ? JSON.parse(cookie(key)) : null;
 	},
-	del: function del (key) {
+	remove: function remove (key) {
 		return cookie(key, null, { expires: -1 });
 	}
 }
 
-export default hcookie;
+_globar.hCookie = hCookie;
+
+export default hCookie;
