@@ -1,6 +1,5 @@
 'use strict';
 
-const _globar = (typeof window !== "undefined" ? window : global || {});
 const cookie = function (key, value, options) {
     if (arguments.length > 1 && String(value) !== "[object Object]") {
         options = extend({path:'/',expires:(new Date((new Date()).getTime()+1000*60*60*24))}, options);
@@ -103,23 +102,26 @@ var isPlainObject = function( obj ) {
     return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
 };
 
+export function set (key, value, option) {
+	var path = option && option.path || "/";
+	var expires = option && option.expires || 1;
+	let num = isNaN(Number(expires)) ? 1 : Number(expires);
+	var date = new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * num);
+	return cookie(key, JSON.stringify(value), { path, expires: date });
+};
 
-var hCookie = {
-	set: function set (key, value, option) {
-		var path = option && option.path || "/";
-		var expires = option && option.expires || 1;
-		let num = isNaN(Number(expires)) ? 1 : Number(expires);
-		var date = new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * num);
-		return cookie(key, JSON.stringify(value), { path, expires: date });
-	},
-	get: function get (key) {
-		return cookie(key) ? JSON.parse(cookie(key)) : null;
-	},
-	remove: function remove (key) {
-		return cookie(key, null, { expires: -1 });
-	}
+export function get (key) {
+	return cookie(key) ? JSON.parse(cookie(key)) : null;
+};
+
+export function remove (key) {
+	return cookie(key, null, { expires: -1 });
 }
 
-_globar.hCookie = hCookie;
+var hCookie = {
+	set,
+	get,
+	remove
+}
 
 export default hCookie;

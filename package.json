@@ -1,11 +1,11 @@
 {
 	"name": "h-cookie",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A simple API for JavaScript to handle cookie storage",
 	"license": "MIT",
-	"main": "dist/h.cookie.cjs.js",
-	"module": "dist/h.cookie.esm.js",
-	"browser": "dist/h.cookie.js",
+	"main": "dist/h-cookie.cjs.js",
+	"module": "dist/h-cookie.esm.js",
+	"browser": "dist/h-cookie.js",
 	"repository": "haojs-next/h-cookie",
 	"author": {
 		"name": "hao",
@@ -15,7 +15,7 @@
 		"node": ">=12"
 	},
 	"scripts": {
-		"build": "rollup -c",
+		"build": "rollup -c --environment NODE_ENV:production",
 		"dev": "rollup -c -w"
 	},
 	"files": [
